@@ -9,6 +9,9 @@
 #define GREEN 4
 #define YELLOW 8
 #define DIVERSION 16
+#define MAX_CARGO_WEIGHT 1000
+#define MAX_CARGO_VOLUME 36
+#define MAX_PACKAGES MAX_CARGO_VOLUME/0.25
 
 /**
 * A map is a 2D raster representation of a map with contents of the map encoded as numeric values.
@@ -41,6 +44,27 @@ struct Route
 };
 
 /**
+* A van including its basic infomation.
+*/
+struct Van 
+{
+    int weightCarried;
+    double volumeCarried;
+	struct Route vanRoute;
+	struct Package packages[MAX_PACKAGES];
+};
+
+/**
+* A package including its basic infomation.
+*/
+struct Package 
+{
+    int weight;
+    double boxSize[3];
+	struct Point destination;
+};
+
+/**
 * Create a map with the position of all buildings in it.
 * @returns - a map with the position of all buildings added to it.
 */
@@ -61,7 +85,7 @@ int getNumRows(const struct Map* map);
 int getNumCols(const struct Map* map);
 
 /**
-* Print the map usign the symbols:
+* Print the map using the symbols:
 * space = open space
 * X = building
 * B = blue route

@@ -11,7 +11,7 @@
 #define DIVERSION 16
 #define MAX_CARGO_WEIGHT 1000
 #define MAX_CARGO_VOLUME 36
-#define MAX_PACKAGES MAX_CARGO_VOLUME/0.25
+#define MAX_PACKAGES 144
 
 /**
 * A map is a 2D raster representation of a map with contents of the map encoded as numeric values.
